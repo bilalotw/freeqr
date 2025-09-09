@@ -38,8 +38,6 @@ This app is **static** (HTML + JS), so you can deploy it anywhere:
 4. Your app will be live at:  
 https://your-username.github.io/qr-code-generator/
 
-yaml
-Copy code
 
 ### 🔹 Netlify (Recommended)
 1. Go to [Netlify](https://www.netlify.com/)  
@@ -93,4 +91,4 @@ This project is licensed under the **MIT License** – free to use and modify.
 ---
 
 ## 💡 Credits
-Built with ❤️ using [qrcode.js](https://github.com/soldair/node-qrcode) and deployed on **Netlify**.
+Built with ❤️ using [qrcode.js](https://github.com/soldair/node-qrcode).

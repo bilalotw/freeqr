@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ✅ SEO Meta -->
+    <title>Free QR Code Generator | Create QR Codes Online</title>
+    <meta
+      name="description"
+      content="Generate QR codes instantly for free. Create QR codes for text, URLs, WiFi, and more. No signup required. Fast and secure online QR generator."
+    />
+    <meta
+      name="keywords"
+      content="QR code generator, free QR code, create QR code online, QR code maker, QR code for WiFi, QR code for business"
+    />
+
+    <!-- ✅ Open Graph for Social Sharing -->
+    <meta
+      property="og:title"
+      content="Free QR Code Generator - Create QR Codes Online"
+    />
+    <meta
+      property="og:description"
+      content="Generate free QR codes online for text, URLs, WiFi, and more. Download instantly in PNG."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yourdomain.com" />
+    <meta property="og:image" content="https://yourdomain.com/preview.png" />
+
+    <!-- ✅ Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Free QR Code Generator" />
+    <meta
+      name="twitter:description"
+      content="Fast & free QR code maker for text, links, and WiFi."
+    />
+    <meta name="twitter:image" content="https://yourdomain.com/preview.png" />
+
+    <!-- ✅ Schema Markup -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Free QR Code Generator",
+        "url": "https://yourdomain.com",
+        "applicationCategory": "Utility",
+        "operatingSystem": "All",
+        "description": "Generate free QR codes instantly for text, links, WiFi, and more. Download and share your QR codes online.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+
+    <style>
+      /* Reset */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        transition: background 0.4s ease, color 0.4s ease;
+      }
+
+      .container {
+        background: #ffffff;
+        padding: 35px 25px;
+        border-radius: 18px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        width: 100%;
+        max-width: 480px;
+        text-align: center;
+        animation: fadeIn 0.5s ease-in-out;
+        transition: background 0.4s ease, color 0.4s ease;
+      }
+
+      h1 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        color: #222;
+      }
+
+      p.description {
+        font-size: 16px;
+        color: #444;
+        margin-bottom: 20px;
+      }
+
+      form {
+        margin-bottom: 20px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 14px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        margin-bottom: 15px;
+        outline: none;
+        transition: border 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      input[type="text"]:focus {
+        border: 1px solid #2575fc;
+        box-shadow: 0 0 6px rgba(37, 117, 252, 0.3);
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        font-weight: 500;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background: #2575fc;
+        color: #fff;
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      button:hover {
+        background: #1a5fd0;
+        transform: translateY(-2px);
+      }
+
+      .qr-section {
+        margin-top: 25px;
+      }
+
+      .qr-section h2 {
+        font-size: 20px;
+        margin-bottom: 12px;
+        color: #333;
+      }
+
+      canvas {
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+        padding: 10px;
+        background: #f9f9f9;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .download-btn {
+        display: inline-block;
+        margin-top: 18px;
+        padding: 12px 20px;
+        background: #28a745;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 15px;
+        transition: background 0.3s ease, transform 0.2s ease;
+        width: 100%;
+        text-align: center;
+      }
+
+      .download-btn:hover {
+        background: #218838;
+        transform: translateY(-2px);
+      }
+
+      /* Toggle button */
+      .toggle-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 8px 14px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        background: #333;
+        color: #fff;
+        font-size: 14px;
+        transition: background 0.3s ease;
+        z-index: 1000;
+      }
+
+      .toggle-btn:hover {
+        background: #000;
+      }
+
+      /* Dark Mode */
+      /* Dark Mode */
+      .dark-mode {
+        background: #121212;
+        color: #eaeaea;
+      }
+
+      .dark-mode .container {
+        background: #1e1e1e;
+        color: #eaeaea;
+      }
+
+      .dark-mode h1,
+      .dark-mode h2,
+      .dark-mode p,
+      .dark-mode li {
+        color: #eaeaea;
+      }
+
+      .dark-mode input[type="text"] {
+        background: #2c2c2c;
+        color: #eee;
+        border: 1px solid #444;
+      }
+
+      .dark-mode input::placeholder {
+        color: #bbb;
+      }
+
+      .dark-mode button {
+        background: #444;
+        color: #fff;
+      }
+
+      .dark-mode .download-btn {
+        background: #007f3f;
+        color: #fff;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 500px) {
+        h1 {
+          font-size: 22px;
+        }
+        .container {
+          padding: 25px 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Dark mode toggle -->
+    <button
+      class="toggle-btn"
+      onclick="toggleDarkMode()"
+      aria-label="Toggle dark mode"
+    >
+      🌙
+    </button>
+
+    <div class="container">
+      <h1>Free Online QR Code Generator</h1>
+      <p class="description">
+        Create QR codes instantly for URLs, text, WiFi, and more. No signup
+        required. Fast, free, and secure.
+      </p>
+
+      <form id="qrForm" aria-label="QR Code Generator Form">
+        <input
+          type="text"
+          id="qrData"
+          placeholder="Enter text or URL"
+          aria-label="QR code content"
+          required
+        />
+        <button type="submit">Generate QR Code</button>
+      </form>
+
+      <div class="qr-section" id="qrSection" style="display: none">
+        <h2>Your Generated QR Code</h2>
+        <canvas id="qrCanvas" aria-label="Generated QR code"></canvas>
+        <a id="downloadBtn" class="download-btn" download="qrcode.png"
+          >⬇ Download QR Code</a
+        >
+      </div>
+
+      <h2>Why Choose Our QR Code Generator?</h2>
+      <ul>
+        <li>✔️ 100% Free and Unlimited</li>
+        <li>✔️ Works on Mobile and Desktop</li>
+        <li>✔️ Supports Text, Links, WiFi, Contacts</li>
+        <li>✔️ Instant PNG Download</li>
+      </ul>
+    </div>
+
+    <!-- QR Code library -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+          localStorage.setItem("theme", "dark");
+        } else {
+          localStorage.setItem("theme", "light");
+        }
+      }
+
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+      }
+
+      const form = document.getElementById("qrForm");
+      const qrInput = document.getElementById("qrData");
+      const qrSection = document.getElementById("qrSection");
+      const qrCanvas = document.getElementById("qrCanvas");
+      const downloadBtn = document.getElementById("downloadBtn");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const data = qrInput.value.trim();
+        if (!data) return;
+
+        await QRCode.toCanvas(qrCanvas, data, { width: 250 });
+        qrSection.style.display = "block";
+
+        const qrImage = qrCanvas.toDataURL("image/png");
+        downloadBtn.href = qrImage;
+      });
+    </script>
+  </body>
+</html>
